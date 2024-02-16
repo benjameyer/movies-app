@@ -14,7 +14,7 @@ function NavBar() {
   }
 
   return (
-    <div className="fixed w-screen h-[6rem] flex justify-between items-center px-12 bg-white dark:bg-slate-900 shadow-md">
+    <div className="fixed z-50 w-screen h-[6rem] flex justify-between items-center px-6 sm:px-12 bg-white dark:bg-slate-900 shadow-md gap-2">
       <div className="flex gap-2 items-center">
         <Link to="/">
           <h1 className="text-2xl font-bold hover:text-slate-400">Movies</h1>
@@ -30,7 +30,7 @@ function NavBar() {
           </div>
         }
       </div>
-      <TextField id="filled-basic" label="Search" variant="filled" />
+      <TextField id="filled-basic" label="Search" variant="filled" className="sm:w-64" />
     </div>
   )
 }
