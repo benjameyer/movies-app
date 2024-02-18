@@ -1,5 +1,5 @@
 import Movie from "./Movie";
-import type { MovieDef } from "../../utils/apiDef"
+import type { MovieDef } from "../../types/apiTypes"
 
 function Movies({ movies } : MoviesProps) {
   return (
