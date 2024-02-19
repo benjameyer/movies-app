@@ -8,14 +8,21 @@ function useGetPopularMovies(page: number) {
   const API_KEY = import.meta.env.VITE_MBD_API_KEY;
 
   useEffect(() => {
-    const getPopularMovies = () => {
+    const getPopularMovies = async () => {
       setLoading(true);
-      fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`)
-        .then(res => res.json())
-        .then((data: Search) => {
-          setPopularMovies(data);
-          setLoading(false);
-        })
+      
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`);
+        const data = await res.json();
+        if (data.error) {
+          throw new Error(data.error);
+        }
+        setPopularMovies(data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
     }
 
     getPopularMovies();
